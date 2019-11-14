@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+    id bean的标识 class 是创建bean对象时使用的类
+    -->
+    <!--
+    <bean id="book" class="com.itheima.ioc.Book"/>
+    -->
+    <!--
+    使用静态工厂创建
+    class 用于指定工厂类
+    factory_method 用于指定工厂类中的哪一个方法
+
+    -->
+    <!--<bean id="book" class="com.itheima.ioc.BookFactory" factory-method="getBook1"/>-->
+
+    <!--    <bean id="bookFactory" class="com.itheima.ioc.BookFactory"/>
+        <bean id="book" factory-bean="bookFactory" factory-method="getBook2"/>-->
+
+
+    <!--
+    scope="singleton" 单例模式, 对象只创建一次, 然后一直存在
+     <bean id="book" class="com.itheima.ioc.Book" scope="singleton"/>
+    -->
+    <!--
+    scope="singleton" 多例模式 即每次获取bean的时候, IOC都给我们创建一个新对象
+    -->
+    <!--    <bean id="book" class="com.itheima.ioc.Book" scope="prototype"/>-->
+
+
+    <!--
+    name   构造函数的形参
+    index  构造函数的形参的索引
+    type   形参的一种类型, 一般省略, (底层通过反射获得)
+    value  实际的值(简单类型)
+    ref    指定IOC容器中的一个声明好的bean的id(用来引用对象)
+    -->
+ <!--   <bean id="student" class="com.itheima.ioc.Student"/>
+    <bean id="book" class="com.itheima.ioc.Book">
+        <constructor-arg name="name" value="肉翔宝典"/>
+        <constructor-arg name="price" value="10.0"/>
+        <constructor-arg name="student" ref="student"/>
+    </bean> -->
+
+
+
+<!--    <bean id="student" class="com.itheima.ioc.Student"/>
+
+    name  set后面的部分
+    value 实际的值(简单类型)
+    ref   指定IOC容器中的一个什么好的benan的id(用来引入对象)
+
+    <bean id="book" class="com.itheima.ioc.Book">
+        <property name="name" value="肉翔宝典"></property>
+        <property name="price" value="10.0"></property>
+        <property name="student" ref="student"></property>
+    </bean>-->
+
+   <!-- <bean id="student" class="com.itheima.ioc.Student"/>
+    <bean id="book" class="com.itheima.ioc.Book"
+        p:name="肉翔宝典" p:price="10.0"p:student-ref="student"
+    >
+    </bean>-->
+
+
+    <!--
+    单列之间标签可以互换
+    双列之间标签可以互换
+    -->
+    <bean id="book" class="com.itheima.ioc.Book">
+        <property name="list">
+            <list>
+                <value>AA</value>
+                <value>bb</value>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <value>CC</value>
+                <value>DD</value>
+            </set>
+        </property>
+        <property name="array">
+            <array>
+                <value>EE</value>
+                <value>FF</value>
+            </array>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="GG" value="gg"></entry>
+                <entry key="HH" value="hh"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="MM">mm</prop>
+                <prop key="NN">nn</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
